@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import InputTodo from "./components/InputTodo";
 import { MdFormatListBulletedAdd } from "react-icons/md";
 import { IoMdAdd } from "react-icons/io";
@@ -9,9 +9,29 @@ function App() {
   const [inputValue, setInputValue] = useState("");
   const [todoItems, setTodoItems] = useState([]);
 
+  useEffect(() => {
+    console.log("inside 1 effect");
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const items = await JSON.parse(localStorage.getItem("items"));
+      console.log("Initial state:", items);
+      setTodoItems(items);
+    } catch (error) {
+      console.error("Error fetching data from localStorage:", error);
+    }
+  };
+  useEffect(() => {
+    console.log("inside 2 effect");
+    localStorage.setItem("items", JSON.stringify(todoItems));
+  }, [todoItems]);
+
   const changeInputHandler = (e) => {
     setInputValue(e.target.value);
   };
+
   const addtodoItemHandler = () => {
     if (inputValue) {
       setTodoItems([
@@ -31,6 +51,7 @@ function App() {
 
     setTodoItems(updatedTodoItems);
   };
+
   const todoDeleteHandler = (i) => {
     const updatedTodoItems = [...todoItems];
     const newUpdatedTodoItems = updatedTodoItems.filter(
@@ -38,6 +59,7 @@ function App() {
     );
     setTodoItems(newUpdatedTodoItems);
   };
+
   const todoEditHandler = (i, editedText) => {
     if (editedText) {
       const updatedTodoItems = [...todoItems];
@@ -46,6 +68,7 @@ function App() {
       setTodoItems(updatedTodoItems);
     }
   };
+
   return (
     <div style={{ width: "500px" }}>
       <div
@@ -64,6 +87,7 @@ function App() {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            cursor: "pointer",
           }}
         >
           <MdFormatListBulletedAdd size={40} color="white" />

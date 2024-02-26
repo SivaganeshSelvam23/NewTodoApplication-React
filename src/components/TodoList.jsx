@@ -9,8 +9,6 @@ const TodoList = ({
   edit,
   setEdit,
 }) => {
-  console.log("todoItems:", todoItems);
-
   return (
     <div className="todoListContainer">
       {todoItems.map((items, index) => (
