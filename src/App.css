@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital@0;1&display=swap");
+body {
+  height: 97vh;
+  display: flex;
+  justify-content: center;
+  background-color: #070f2b;
+}
+.titleText {
+  font-family: "Montserrat";
+  color: white;
+}
+.todoContainer {
+  display: flex;
+  flex-direction: column;
+}
+.inputContainer {
+  display: flex;
+  width: auto;
+  align-items: center;
+  justify-content: space-between;
+}
+.addButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1.8rem;
+  width: 2rem;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #292f3c;
+}
+.input {
+  background-color: #292f3c;
+  height: 1.8rem;
+  width: 26rem;
+  color: white;
+  border-radius: 5px;
+  border: 0;
+  padding: 10px;
+}
+.todoListContainer {
+  color: white;
+  font-family: "Montserrat";
+  margin-top: 30px;
+}
+.listitems {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+}
+.inputTwo {
+  background-color: #292f3c;
+  height: 1rem;
+  width: 18rem;
+  color: white;
+  border-radius: 5px;
+  border: 0;
+  padding: 10px;
+}
